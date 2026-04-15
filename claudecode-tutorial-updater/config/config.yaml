@@ -1,0 +1,53 @@
+# Claude Code教程自动更新配置
+check:
+  # 检查频率：daily/6hourly/hourly
+  frequency: "daily"
+  # 执行时间（cron表达式）
+  schedule: "0 2 * * *"
+  
+  # 监测渠道
+  channels:
+    official_docs:
+      url: "https://docs.anthropic.com/claude/docs"
+      enabled: true
+    github_repo:
+      url: "https://github.com/anthropics/claude-code"
+      enabled: true
+    release_notes:
+      url: "https://www.anthropic.com/release-notes"
+      enabled: true
+    plugin_market:
+      url: "https://plugins.claude.ai"
+      enabled: true
+    discord_announcements:
+      url: "https://discord.com/channels/1083678458297107498/1083678458796236834"
+      enabled: true
+
+notify:
+  # 通知方式：feishu/email
+  channels: ["feishu"]
+  # 飞书webhook（如果需要）
+  feishu_webhook: ""
+  # 告警阈值：critical/major/minor
+  alert_threshold: "major"
+
+update:
+  # 教程仓库路径
+  repo_path: "/workspace/projects/claudecode-book"
+  # 自动提交到GitHub
+  auto_commit: true
+  # 自动推送到远程
+  auto_push: false
+  # 更新前自动备份
+  auto_backup: true
+  # 备份路径
+  backup_path: "/workspace/backup/claudecode-book"
+
+priority:
+  # 不同变更类型的响应时间（小时）
+  critical: 24
+  major: 72
+  minor: 168
+
+# 自定义监测渠道
+custom_channels: []

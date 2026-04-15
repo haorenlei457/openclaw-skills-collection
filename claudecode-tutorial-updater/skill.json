@@ -1,0 +1,38 @@
+{
+  "name": "claudecode-tutorial-updater",
+  "version": "1.0.0",
+  "description": "自动追踪Claude Code官方变更，持续更新教程内容",
+  "author": "Yue Dingsong",
+  "type": "skill",
+  "category": "automation",
+  "keywords": ["claude-code", "tutorial", "update", "automation"],
+  "permissions": [
+    "file:read",
+    "file:write",
+    "git:read",
+    "git:write",
+    "http:fetch"
+  ],
+  "exports": {
+    "commands": [
+      "./commands/*.md"
+    ],
+    "hooks": [
+      "./hooks/*.sh"
+    ]
+  },
+  "dependencies": {
+    "python": ">=3.9",
+    "requests": ">=2.31.0",
+    "beautifulsoup4": ">=4.12.0",
+    "pyyaml": ">=6.0"
+  },
+  "settings": {
+    "enabledByDefault": true,
+    "autoUpdate": true,
+    "checkFrequency": "daily"
+  },
+  "engines": {
+    "claude": ">=1.0.0"
+  }
+}
