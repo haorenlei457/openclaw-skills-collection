@@ -34,3 +34,58 @@ claudecode-tutorial-updater/
 ├── README.md        # 技能详细说明
 └── skill.json       # 技能元数据
 ```
+
+## 🔧 配置说明
+所有配置可在 `config/config.yaml` 中修改：
+
+### 检测配置
+```yaml
+check:
+  # 检查频率：hourly(每小时)/6hourly(每6小时)/daily(每天)
+  frequency: "daily"
+  # 执行时间（cron表达式，默认每天凌晨2点）
+  schedule: "0 2 * * *"
+  
+  # 监测渠道（默认全部开启）
+  channels:
+    official_docs: "https://docs.anthropic.com/claude/docs"       # 官方文档
+    github_repo: "https://github.com/anthropics/claude-code"      # GitHub仓库
+    release_notes: "https://www.anthropic.com/release-notes"      # 发布说明
+    plugin_market: "https://plugins.claude.ai"                    # 插件市场
+    discord_announcements: "Discord官方公告频道"                   # Discord公告
+```
+
+### 通知配置
+```yaml
+notify:
+  # 通知方式：支持飞书(feishu)/邮件(email)
+  channels: ["feishu"]
+  # 飞书webhook地址（需自行配置）
+  feishu_webhook: ""
+  # 告警阈值：critical(严重)/major(重要)/minor(次要)
+  alert_threshold: "major"
+```
+
+### 更新配置
+```yaml
+update:
+  # 本地教程仓库路径
+  repo_path: "/workspace/projects/claudecode-book"
+  # 自动提交变更到Git
+  auto_commit: true
+  # 自动推送到远程仓库（默认关闭）
+  auto_push: false
+  # 更新前自动备份
+  auto_backup: true
+  # 备份文件存储路径
+  backup_path: "/workspace/backup/claudecode-book"
+```
+
+### 优先级配置
+```yaml
+priority:
+  # 不同变更类型的响应时间（小时）
+  critical: 24   # 功能变更、安全更新
+  major: 72      # 教程新增、API更新
+  minor: 168     # 文档优化、错别字修正
+```
